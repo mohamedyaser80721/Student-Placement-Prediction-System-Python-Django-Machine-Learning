@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Placement Result</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>Prediction Result</h1>
+
+    <div class="result-box">
+        <h2 class="result {% if 'not' in result|lower %}fail{% else %}success{% endif %}">
+            {{ result }}
+        </h2>
+
+        <p><strong>IQ:</strong> {{ IQ }}</p>
+        <p><strong>Prev Sem Result:</strong> {{ Prev_Sem_Result }}</p>
+        <p><strong>CGPA:</strong> {{ CGPA }}</p>
+        <p><strong>Academic Performance:</strong> {{ Academic_Performance }}</p>
+        <p><strong>Internship Experience:</strong> {{ Internship_Experience }}</p>
+        <p><strong>Extra Curricular Score:</strong> {{ Extra_Curricular_Score }}</p>
+        <p><strong>Communication Skills:</strong> {{ Communication_Skills }}</p>
+        <p><strong>Projects Completed:</strong> {{ Projects_Completed }}</p>
+    </div>
+
+    <a href="{% url 'home' %}">← Back to Predictor</a> &nbsp; | &nbsp;
+    
+    <form method="POST" action="{% url 'download_pdf' %}" style="display:inline;">
+        {% csrf_token %}
+        <!-- Pass all values as hidden inputs to generate PDF -->
+        <input type="hidden" name="result" value="{{ result }}">
+        <input type="hidden" name="IQ" value="{{ IQ }}">
+        <input type="hidden" name="Prev_Sem_Result" value="{{ Prev_Sem_Result }}">
+        <input type="hidden" name="CGPA" value="{{ CGPA }}">
+        <input type="hidden" name="Academic_Performance" value="{{ Academic_Performance }}">
+        <input type="hidden" name="Internship_Experience" value="{{ Internship_Experience }}">
+        <input type="hidden" name="Extra_Curricular_Score" value="{{ Extra_Curricular_Score }}">
+        <input type="hidden" name="Communication_Skills" value="{{ Communication_Skills }}">
+        <input type="hidden" name="Projects_Completed" value="{{ Projects_Completed }}">
+        <button type="submit">Download PDF</button>
+    </form>
+</body>
+</html>

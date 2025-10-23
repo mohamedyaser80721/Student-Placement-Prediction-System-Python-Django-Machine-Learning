@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        h1 { text-align: center; color: #007bff; }
+        .content { margin: 20px; }
+        p { font-size: 14px; line-height: 1.5; }
+        .result.success { color: green; font-weight: bold; }
+        .result.fail { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Student Placement Report</h1>
+    <div class="content">
+        <p class="result {% if 'not' in result|lower %}fail{% else %}success{% endif %}">{{ result }}</p>
+        <p><strong>IQ:</strong> {{ IQ }}</p>
+        <p><strong>Prev Sem Result:</strong> {{ Prev_Sem_Result }}</p>
+        <p><strong>CGPA:</strong> {{ CGPA }}</p>
+        <p><strong>Academic Performance:</strong> {{ Academic_Performance }}</p>
+        <p><strong>Internship Experience:</strong> {{ Internship_Experience }}</p>
+        <p><strong>Extra Curricular Score:</strong> {{ Extra_Curricular_Score }}</p>
+        <p><strong>Communication Skills:</strong> {{ Communication_Skills }}</p>
+        <p><strong>Projects Completed:</strong> {{ Projects_Completed }}</p>
+    </div>
+</body>
+</html>

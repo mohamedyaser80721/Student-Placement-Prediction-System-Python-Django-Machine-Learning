@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Placement Predictor</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>Student Placement Predictor</h1>
+
+    <form method="POST" action="{% url 'result' %}">
+        {% csrf_token %}
+        <label>IQ:</label>
+        <input type="text" name="IQ" required><br>
+
+        <label>Prev Sem Result:</label>
+        <input type="text" name="Prev_Sem_Result" required><br>
+
+        <label>CGPA:</label>
+        <input type="text" name="CGPA" required><br>
+
+        <label>Academic Performance:</label>
+        <input type="text" name="Academic_Performance" required><br>
+
+        <label>Internship Experience (0 or 1):</label>
+        <input type="text" name="Internship_Experience" required><br>
+
+        <label>Extra Curricular Score:</label>
+        <input type="text" name="Extra_Curricular_Score" required><br>
+
+        <label>Communication Skills:</label>
+        <input type="text" name="Communication_Skills" required><br>
+
+        <label>Projects Completed:</label>
+        <input type="text" name="Projects_Completed" required><br>
+
+        <button type="submit">Predict</button>
+    </form>
+</body>
+</html>
